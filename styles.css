@@ -6,6 +6,8 @@ body {
 }
 
 .wrapper {
+  -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
   width: 320px;
   position: absolute;
   top: 50%;
@@ -26,7 +28,12 @@ body {
 }
 
 .image {
+  background-image: url("/images/drawers.jpg");
   width: 320px;
+  height: 212px;
+  background-position-y: -3%;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -59,6 +66,7 @@ body {
       justify-content: space-around;
   height: 50px;
   padding-top: 1.5em;
+  position: relative;
 }
 
 .stats__profile {
@@ -85,17 +93,41 @@ body {
 
 .stats__btn {
   background-color: #ecf2f8;
-  padding: 0.6em;
   border-radius: 50%;
-  height: 12px;
+  outline: none;
+  border: none;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.stats__btn--image {
+  fill: #48556a;
+}
+
+.stats__btn:hover {
+  background-color: #48556a;
+}
+
+.stats__btn:hover .stats__btn--image {
+  fill: #ecf2f8;
+}
+
+a .share__link {
+  -webkit-transition: -webkit-transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+a:hover .share__link,
+a:focus .share__link {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 .share {
-  height: 50px;
+  height: 45px;
   background-color: #48556a;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -104,20 +136,148 @@ body {
           justify-content: space-evenly;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  padding: 1em 0 1.7em 0;
+  position: absolute;
+  width: 320px;
+  bottom: 0;
   display: none;
+  opacity: 0;
+  -webkit-animation: fadeIn 1s ease forwards;
+          animation: fadeIn 1s ease forwards;
+}
+
+.share.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.share__title {
+  letter-spacing: 3px;
+  color: #9eafc2;
+  font-size: 12px;
 }
 
 .share__link-container {
-  -webkit-transform: translateX(-10px);
-          transform: translateX(-10px);
+  -webkit-transform: translateX(-25px);
+          transform: translateX(-25px);
 }
 
 .share__link {
   height: 20px;
-  margin: 0 0.25em;
+  margin: 0 0.5em;
 }
 
 .share__btn {
-  fill: white;
+  background-color: #6d7f97;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  padding: 0.5em;
+  -webkit-transform: translateX(-15px);
+          transform: translateX(-15px);
+  cursor: pointer;
+}
+
+.share__btn:hover {
+  background-color: #ecf2f8;
+}
+
+.share__btn:hover .share__btn--image {
+  fill: #6d7f97;
+}
+
+.share__btn--image {
+  fill: #ecf2f8;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 700px;
+  }
+  .image {
+    background-image: url("/images/drawers.jpg");
+    width: 125%;
+    height: 298px;
+    background-repeat: no-repeat;
+    background-position-x: -11px;
+    background-size: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 20px;
+  }
+  .article {
+    padding: 1.5em 3em;
+  }
+  .article__text {
+    line-height: 1.4;
+  }
+  .article__text--bold {
+    font-size: 17px;
+  }
+  .stats {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .stats__profile {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  .stats__info {
+    -webkit-transform: translateX(-60px);
+            transform: translateX(-60px);
+  }
+  .share {
+    height: 30px;
+    border-radius: 20px;
+    padding: 1em;
+    width: 225px;
+    bottom: 85px;
+    right: -68px;
+  }
+  .share::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -25px;
+    right: 44%;
+    margin-top: -10px;
+    width: 0;
+    height: 0;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #48556a;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+  .share__link-container {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  .share__link {
+    height: 20px;
+    margin: 0 1em;
+  }
+  .share__btn {
+    display: none;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
